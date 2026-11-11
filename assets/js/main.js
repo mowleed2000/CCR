@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAccordions();
   initEnquiryForms();
   initCurrentYear();
+  initMotionReveal();
 });
 
 /**
@@ -327,5 +328,33 @@ function initCurrentYear() {
   const year = new Date().getFullYear();
   yearElements.forEach(el => {
     el.textContent = year;
+  });
+}
+
+/**
+ * Reveal important sections as they enter the viewport.
+ * The page remains fully visible when motion is reduced or observers are unavailable.
+ */
+function initMotionReveal() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+
+  const targets = document.querySelectorAll(
+    '.section-header, .portal-card, .sector-card, .step-card, .timeline-item, .value-card, .contact-info-panel, .contact-form-panel'
+  );
+  if (!targets.length) return;
+
+  const observer = new IntersectionObserver((entries, currentObserver) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        currentObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
+
+  targets.forEach((target, index) => {
+    target.classList.add('motion-reveal');
+    target.style.setProperty('--reveal-delay', `${Math.min(index % 4, 3) * 70}ms`);
+    observer.observe(target);
   });
 }
