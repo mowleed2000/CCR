@@ -231,111 +231,90 @@ function initAccordions() {
  * Enquiry Form Handling (Employer / Candidate dual mode & submission)
  */
 function initEnquiryForms() {
-  const forms = document.querySelectorAll('.enquiry-form');
-
-  forms.forEach(form => {
+  document.querySelectorAll('.enquiry-form').forEach(form => {
     const typeButtons = form.querySelectorAll('.type-tab-btn');
     const typeInput = form.querySelector('input[name="enquiry_type"]');
     const employerFields = form.querySelectorAll('.field-employer');
     const candidateFields = form.querySelectorAll('.field-candidate');
     const statusMsg = form.querySelector('.form-status-message');
 
-    // Tab switcher between Employer and Candidate inside form
-    if (typeButtons.length > 0) {
-      typeButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const selectedType = btn.getAttribute('data-type');
+    const setType = (type) => {
+      const isCandidate = type === 'candidate';
+      if (typeInput) typeInput.value = type;
 
-          typeButtons.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
+      typeButtons.forEach(button => {
+        const active = button.dataset.type === type;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
 
-          if (typeInput) typeInput.value = selectedType;
-
-          if (selectedType === 'candidate') {
-            employerFields.forEach(el => el.style.display = 'none');
-            candidateFields.forEach(el => el.style.display = 'block');
-            
-            // Adjust required attributes
-            employerFields.forEach(el => {
-              const req = el.querySelectorAll('input, select, textarea');
-              req.forEach(r => r.removeAttribute('required'));
-            });
-            candidateFields.forEach(el => {
-              const req = el.querySelectorAll('[data-req="true"]');
-              req.forEach(r => r.setAttribute('required', 'required'));
-            });
-          } else {
-            // Employer mode
-            employerFields.forEach(el => el.style.display = 'block');
-            candidateFields.forEach(el => el.style.display = 'none');
-
-            employerFields.forEach(el => {
-              const req = el.querySelectorAll('[data-req="true"]');
-              req.forEach(r => r.setAttribute('required', 'required'));
-            });
-            candidateFields.forEach(el => {
-              const req = el.querySelectorAll('input, select, textarea');
-              req.forEach(r => r.removeAttribute('required'));
-            });
-          }
+      employerFields.forEach(group => {
+        group.style.display = isCandidate ? 'none' : '';
+        group.querySelectorAll('[data-req="true"]').forEach(field => {
+          field.required = !isCandidate;
         });
       });
+      candidateFields.forEach(group => {
+        group.style.display = isCandidate ? '' : 'none';
+        group.querySelectorAll('input, select, textarea').forEach(field => {
+          field.required = isCandidate && field.tagName === 'SELECT';
+        });
+      });
+    };
+
+    if (typeButtons.length) {
+      typeButtons.forEach(button => {
+        button.addEventListener('click', () => setType(button.dataset.type || 'employer'));
+      });
+      setType(typeInput?.value || 'employer');
     }
 
-    // Submit handler
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-
-      // Simple validation check
+    form.addEventListener('submit', event => {
+      event.preventDefault();
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
       }
 
-      const isEmployer = (data.enquiry_type || 'employer') === 'employer';
-      const name = data.name || 'Valued Partner';
-      const email = data.email || 'info@collabcreaterecruitment.com';
-
-      // Build fallback mailto URL
+      const data = Object.fromEntries(new FormData(form).entries());
+      const isEmployer = data.enquiry_type === 'employer';
+      const name = data.name || '';
       const subject = encodeURIComponent(
-        isEmployer 
-          ? `Employer Hiring Enquiry - ${data.company_name || name}`
-          : `Candidate Career Enquiry - ${name}`
+        isEmployer
+          ? `Employer hiring enquiry - ${data.company_name || name}`
+          : `Candidate career enquiry - ${name}`
       );
-
-      const bodyText = encodeURIComponent(
-        `Hello Collab Create Recruitment team,\n\n` +
-        `Enquiry Type: ${isEmployer ? 'Employer (Hiring)' : 'Candidate (Seeking Employment)'}\n` +
-        `Name: ${name}\n` +
-        `Email: ${email}\n` +
-        `Phone: ${data.phone || 'N/A'}\n` +
-        (isEmployer ? `Company: ${data.company_name || 'N/A'}\nRoles Needed: ${data.roles_needed || 'N/A'}\n` : `Target Sector: ${data.candidate_sector || 'N/A'}\nExperience: ${data.experience_summary || 'N/A'}\n`) +
-        `Message:\n${data.message || 'N/A'}\n\n` +
-        `Sent via Collab Create Recruitment Website`
-      );
-
-      const mailtoUrl = `mailto:info@collabcreaterecruitment.com?subject=${subject}&body=${bodyText}`;
+      const details = [
+        'Hello Collab Create Recruitment team,',
+        '',
+        `Enquiry type: ${isEmployer ? 'Employer (hiring)' : 'Candidate (seeking employment)'}`,
+        `Name: ${name}`,
+        `Email: ${data.email || ''}`,
+        data.phone ? `Phone: ${data.phone}` : '',
+        isEmployer
+          ? `Company: ${data.company_name || ''}\nRoles needed: ${data.roles_needed || ''}\nSector: ${data.sector || ''}`
+          : `Target sector: ${data.candidate_sector || ''}\nExperience: ${data.experience_summary || ''}`,
+        '',
+        `Message: ${data.message || ''}`
+      ].filter(Boolean).join('\n');
+      const mailto = `mailto:info@collabcreaterecruitment.com?subject=${subject}&body=${encodeURIComponent(details)}`;
 
       if (statusMsg) {
-        statusMsg.style.display = 'block';
+        statusMsg.replaceChildren();
         statusMsg.className = 'form-status-message success';
-        statusMsg.innerHTML = `
-          <strong>Thank you, ${name}!</strong><br>
-          Your enquiry has been formatted. Our team will review your requirements and respond promptly at <em>${email}</em>.<br><br>
-          <a href="${mailtoUrl}" class="btn btn-secondary" style="margin-top: 10px; display: inline-flex;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            Send directly via your email client
-          </a>
-        `;
+        statusMsg.style.display = 'block';
+        const heading = document.createElement('strong');
+        heading.textContent = 'Your enquiry is ready to send.';
+        const explanation = document.createElement('p');
+        explanation.textContent = 'Choose the button below to open your email app with the enquiry details filled in. The enquiry is sent only after you send that email.';
+        const link = document.createElement('a');
+        link.href = mailto;
+        link.className = 'btn btn-secondary';
+        link.textContent = 'Open email to send enquiry';
+        link.style.marginTop = '10px';
+        statusMsg.append(heading, explanation, link);
         statusMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
-
-      // Reset form fields
-      form.reset();
     });
   });
 }
