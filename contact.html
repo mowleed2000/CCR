@@ -27,7 +27,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="site-logo-link" aria-label="Collab Create Recruitment Home">
-        <img src="assets/images/logo.png" alt="Collab Create Recruitment" class="brand-logo" width="180" height="52">
+        <span class="brand-lockup"><span class="brand-monogram" aria-hidden="true">CC</span><span class="brand-copy"><strong>Collab Create</strong><small>Recruitment</small></span></span>
       </a>
 
       <nav class="desktop-nav" aria-label="Main Navigation">
@@ -35,7 +35,8 @@
           <li><a href="index.html" class="nav-link">Home</a></li>
           <li><a href="employers.html" class="nav-link">For Employers</a></li>
           <li><a href="candidates.html" class="nav-link">For Candidates</a></li>
-          <li><a href="jobs.html" class="nav-link">Jobs</a></li>
+          <li><a href="jobs.html" class="nav-link">Roles</a></li>
+          <li><a href="blog.html" class="nav-link">Insights</a></li>
           <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
           <li><a href="about.html" class="nav-link">About Us</a></li>
           <li><a href="contact.html" class="nav-link active">Contact</a></li>
@@ -58,7 +59,7 @@
   <div id="nav-backdrop" class="nav-backdrop" aria-hidden="true"></div>
   <aside id="mobile-nav" class="mobile-nav-drawer" aria-hidden="true">
     <div class="mobile-nav-header">
-      <img src="assets/images/logo.png" alt="CCR Logo" class="brand-logo-mobile" width="140">
+      <span class="brand-lockup"><span class="brand-monogram" aria-hidden="true">CC</span><span class="brand-copy"><strong>Collab Create</strong><small>Recruitment</small></span></span>
       <button id="nav-close" class="mobile-close-btn" aria-label="Close Navigation Menu">&times;</button>
     </div>
     <nav class="mobile-nav-body" aria-label="Mobile Navigation">
@@ -66,7 +67,8 @@
         <li><a href="index.html" class="mobile-nav-link">Home</a></li>
         <li><a href="employers.html" class="mobile-nav-link">For Employers</a></li>
         <li><a href="candidates.html" class="mobile-nav-link">For Candidates</a></li>
-        <li><a href="jobs.html" class="mobile-nav-link">Jobs</a></li>
+        <li><a href="jobs.html" class="mobile-nav-link">Roles</a></li>
+        <li><a href="blog.html" class="mobile-nav-link">Insights</a></li>
         <li><a href="how-it-works.html" class="mobile-nav-link">How It Works</a></li>
         <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
         <li><a href="contact.html" class="mobile-nav-link active">Contact</a></li>
@@ -116,7 +118,7 @@
               <!-- Visual Metaphor / Trust Image -->
             <div class="mt-8">
               <img 
-                src="assets/images/man-meeting.jpg" 
+                src="assets/images/customer-service-talking.jpg" 
                 alt="Recruiter and business partner reviewing recruitment requirements" 
                 class="rounded-lg shadow-sm w-full"
                 loading="lazy"
@@ -175,10 +177,7 @@
                     <label class="form-label" for="contact-emp-sector">Industry Sector <span class="required">*</span></label>
                     <select id="contact-emp-sector" name="sector" class="form-control" data-req="true" required>
                       <option value="">Select Industry</option>
-                      <option value="Hospitality & Culinary">Hospitality & Culinary</option>
-                      <option value="Logistics & Distribution">Logistics & Distribution</option>
-                      <option value="Corporate & Office Support">Corporate & Office Support</option>
-                      <option value="Other Commercial Sector">Other Commercial Sector</option>
+                      <option value="Retail">Retail</option><option value="Technology & IT">Technology & IT</option><option value="Sales">Sales</option><option value="Customer Service">Customer Service</option><option value="Finance & Payroll">Finance & Payroll</option><option value="Security & Front Desk">Security & Front Desk</option><option value="Cleaning & Facilities">Cleaning & Facilities</option><option value="Healthcare">Healthcare</option><option value="Care & Support">Care & Support</option><option value="Engineering & Technical">Engineering & Technical</option><option value="Manufacturing & Production">Manufacturing & Production</option><option value="Skilled Trades">Skilled Trades</option><option value="HGV & Transport">HGV & Transport</option><option value="Forklift & Plant">Forklift & Plant</option><option value="Warehousing & Distribution">Warehousing & Distribution</option><option value="Hospitality & Chefs">Hospitality & Chefs</option><option value="Delivery & Logistics">Delivery & Logistics</option><option value="Office & Administration">Office & Administration</option><option value="Other">Other</option>
                     </select>
                   </div>
                   <div class="form-group">
@@ -193,10 +192,7 @@
                     <label class="form-label" for="contact-cand-sector">Target Sector <span class="required">*</span></label>
                     <select id="contact-cand-sector" name="candidate_sector" class="form-control">
                       <option value="">Select Target Sector</option>
-                      <option value="Hospitality & Kitchen">Hospitality & Kitchen</option>
-                      <option value="Logistics & Delivery">Logistics & Delivery</option>
-                      <option value="Corporate & Admin">Corporate & Admin</option>
-                      <option value="Other Sector">Other Sector</option>
+                      <option value="Retail">Retail</option><option value="Technology & IT">Technology & IT</option><option value="Sales">Sales</option><option value="Customer Service">Customer Service</option><option value="Finance & Payroll">Finance & Payroll</option><option value="Security & Front Desk">Security & Front Desk</option><option value="Cleaning & Facilities">Cleaning & Facilities</option><option value="Healthcare">Healthcare</option><option value="Care & Support">Care & Support</option><option value="Engineering & Technical">Engineering & Technical</option><option value="Manufacturing & Production">Manufacturing & Production</option><option value="Skilled Trades">Skilled Trades</option><option value="HGV & Transport">HGV & Transport</option><option value="Forklift & Plant">Forklift & Plant</option><option value="Warehousing & Distribution">Warehousing & Distribution</option><option value="Hospitality & Chefs">Hospitality & Chefs</option><option value="Delivery & Logistics">Delivery & Logistics</option><option value="Office & Administration">Office & Administration</option><option value="Other">Other</option>
                     </select>
                   </div>
                   <div class="form-group">
@@ -241,7 +237,7 @@
       <div class="footer-grid">
         <div class="footer-brand-col">
           <a href="index.html" class="footer-logo-link">
-            <img src="assets/images/logo.png" alt="Collab Create Recruitment Logo" class="footer-logo" width="180">
+            <span class="brand-lockup"><span class="brand-monogram" aria-hidden="true">CC</span><span class="brand-copy"><strong>Collab Create</strong><small>Recruitment</small></span></span>
           </a>
           <p class="footer-tagline">
             Recruitment support for employers and candidates, with a clear 28-day payment arrangement for placements.
@@ -257,7 +253,8 @@
           <ul class="footer-nav-list">
             <li><a href="employers.html">Employer Services</a></li>
             <li><a href="employers.html#settlement">28-Day Settlement Model</a></li>
-            <li><a href="jobs.html">Sectors & Disciplines</a></li>
+            <li><a href="jobs.html">Roles & Sectors</a></li>
+            <li><a href="blog.html">Recruitment Insights</a></li>
             <li><a href="how-it-works.html">Hiring Timeline</a></li>
             <li><a href="contact.html">Submit Vacancy Enquiry</a></li>
           </ul>

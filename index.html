@@ -27,7 +27,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="site-logo-link" aria-label="Collab Create Recruitment Home">
-        <img src="assets/images/logo.png" alt="Collab Create Recruitment" class="brand-logo" width="180" height="52">
+        <span class="brand-lockup"><span class="brand-monogram" aria-hidden="true">CC</span><span class="brand-copy"><strong>Collab Create</strong><small>Recruitment</small></span></span>
       </a>
 
       <!-- Desktop Navigation -->
@@ -36,7 +36,8 @@
           <li><a href="index.html" class="nav-link active">Home</a></li>
           <li><a href="employers.html" class="nav-link">For Employers</a></li>
           <li><a href="candidates.html" class="nav-link">For Candidates</a></li>
-          <li><a href="jobs.html" class="nav-link">Jobs</a></li>
+          <li><a href="jobs.html" class="nav-link">Roles</a></li>
+          <li><a href="blog.html" class="nav-link">Insights</a></li>
           <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
           <li><a href="about.html" class="nav-link">About Us</a></li>
           <li><a href="contact.html" class="nav-link">Contact</a></li>
@@ -60,7 +61,7 @@
   <div id="nav-backdrop" class="nav-backdrop" aria-hidden="true"></div>
   <aside id="mobile-nav" class="mobile-nav-drawer" aria-hidden="true">
     <div class="mobile-nav-header">
-      <img src="assets/images/logo.png" alt="CCR Logo" class="brand-logo-mobile" width="140">
+      <span class="brand-lockup"><span class="brand-monogram" aria-hidden="true">CC</span><span class="brand-copy"><strong>Collab Create</strong><small>Recruitment</small></span></span>
       <button id="nav-close" class="mobile-close-btn" aria-label="Close Navigation Menu">&times;</button>
     </div>
     <nav class="mobile-nav-body" aria-label="Mobile Navigation">
@@ -68,7 +69,8 @@
         <li><a href="index.html" class="mobile-nav-link active">Home</a></li>
         <li><a href="employers.html" class="mobile-nav-link">For Employers</a></li>
         <li><a href="candidates.html" class="mobile-nav-link">For Candidates</a></li>
-        <li><a href="jobs.html" class="mobile-nav-link">Jobs</a></li>
+        <li><a href="jobs.html" class="mobile-nav-link">Roles</a></li>
+        <li><a href="blog.html" class="mobile-nav-link">Insights</a></li>
         <li><a href="how-it-works.html" class="mobile-nav-link">How It Works</a></li>
         <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
         <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
@@ -85,111 +87,30 @@
   </aside>
 
   <main id="main-content">
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="container">
-        <div class="hero-grid">
-          <!-- Hero Text & Value Proposition -->
-          <div class="hero-text-col">
-            <div class="badge-wrapper">
-              <span class="badge badge-gold">
-                <span class="badge-dot"></span>
-                Recruitment built around people
-              </span>
-            </div>
-            <h1 class="hero-headline">
-              Connecting people with the right opportunities.
-            </h1>
-            <p class="hero-subheading">
-              We help employers find candidates and support people as they explore their next role.
-            </p>
-
-            <!-- Reassuring 28-day settlement banner -->
-            <div class="settlement-callout-card">
-              <div class="settlement-icon-box">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                  <path d="m9 12 2 2 4-4"></path>
-                </svg>
-              </div>
-              <div class="settlement-content">
-                <h2 class="settlement-title">28-Day Settlement Arrangement</h2>
-                <p class="settlement-desc">
-                  Payment is due after the placed employee has completed <strong>28 days of employment</strong>. A balanced, reassuring payment model designed to reduce hiring risk and ensure an enduring fit.
-                </p>
-              </div>
-            </div>
-
-            <!-- CTAs -->
-            <div class="hero-cta-group">
-              <a href="employers.html" class="btn btn-primary btn-lg">
-                <span>Tell Us Who You Need</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-              <a href="candidates.html" class="btn btn-outline btn-lg">
-                <span>Explore Opportunities</span>
-              </a>
-            </div>
-
-            <!-- Trust Highlights -->
-            <div class="hero-trust-strip">
-              <div class="trust-item">
-                <span class="trust-number">28 Days</span>
-                <span class="trust-label">Settlement Period</span>
-              </div>
-              <div class="trust-divider"></div>
-              <div class="trust-item">
-                <span class="trust-number">Three</span>
-                <span class="trust-label">Example role areas</span>
-              </div>
-              <div class="trust-divider"></div>
-              <div class="trust-item">
-                <span class="trust-number">People</span>
-                <span class="trust-label">At the centre</span>
-              </div>
-            </div>
+    <!-- Full-screen animated recruitment graph background -->
+    <section class="hero-section hero-video-hero">
+      <video class="hero-background-video" autoplay loop muted playsinline preload="auto" poster="assets/images/chart-poster.jpg" aria-hidden="true" tabindex="-1">
+        <source src="assets/videos/hero-chart.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-shade" aria-hidden="true"></div>
+      <div class="hero-video-lines" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <div class="hero-text-col">
+          <span class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>People-first recruitment</span>
+          <h1 class="hero-headline">The right people. A clearer way to hire.</h1>
+          <p class="hero-subheading">Collab Create Recruitment connects employers with candidates across a broad range of roles, with straightforward support at every step.</p>
+          <div class="hero-offer-panel">
+            <span class="offer-icon" aria-hidden="true">28</span>
+            <div><strong>Payment after a successful first month</strong><span>Placement payment is due after the employee completes 28 days of employment. Ask us about the full terms for your vacancy.</span></div>
           </div>
-
-          <!-- Hero Video Showcase Card -->
-          <div class="hero-visual-col">
-            <div class="hero-card-frame">
-              <div class="hero-card-glow"></div>
-              <div class="video-frame-container">
-                <video 
-                  id="hero-video" 
-                  class="hero-video-element" 
-                  autoplay 
-                  loop 
-                  muted 
-                  playsinline 
-                  poster="assets/images/chart-poster.jpg"
-                  aria-label="CCR recruitment workflow and performance dynamics animation"
-                >
-                  <source src="assets/videos/hero-chart.mp4" type="video/mp4">
-                  Your browser does not support high-definition video playback.
-                </video>
-                <div class="video-overlay-gradient"></div>
-                <div class="video-overlay-content">
-                  <div class="video-header-row">
-                    <span class="video-tag">
-                      <span class="video-pulse"></span>
-                      Active Matching Workflow
-                    </span>
-                    <button id="video-toggle-btn" class="video-controls-btn" aria-label="Pause hero video">
-                      <span class="video-icon">&#10074;&#10074;</span>
-                      <span class="video-label">Pause</span>
-                    </button>
-                  </div>
-                  <div class="video-footer-info">
-                    <h3 class="video-caption-title">Targeted Candidate Alignment</h3>
-                    <p class="video-caption-desc">Data-driven evaluation meets hands-on consultative recruiter screening.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="hero-cta-group">
+            <a href="employers.html#enquiry" class="btn btn-primary btn-lg">Tell us who you need <span aria-hidden="true">→</span></a>
+            <a href="candidates.html#register" class="btn btn-glass btn-lg">Explore candidate support</a>
           </div>
+          <div class="hero-proof-points"><span>Clear 28-day payment point</span><span>Support for employers and candidates</span><span><a href="jobs.html">Explore role areas →</a></span></div>
         </div>
       </div>
+      <a class="hero-scroll-cue" href="#approach" aria-label="Scroll to learn about our recruitment approach"><span></span></a>
     </section>
 
     <!-- Metaphor Section: De-risking Hiring -->
@@ -329,7 +250,7 @@
       <div class="container">
         <div class="section-header text-center max-w-2xl mx-auto">
           <span class="badge badge-dark">Key Disciplines</span>
-          <h2 class="section-title">Specialist Sectors We Support</h2>
+          <h2 class="section-title">Role Areas We Can Discuss</h2>
           <p class="section-subtitle">
             We currently highlight chef, delivery driver, and corporate role areas. Contact us to ask about current opportunities.
           </p>
@@ -564,7 +485,7 @@
         <!-- Col 1: Brand & Logo -->
         <div class="footer-brand-col">
           <a href="index.html" class="footer-logo-link">
-            <img src="assets/images/logo.png" alt="Collab Create Recruitment Logo" class="footer-logo" width="180">
+            <span class="brand-lockup"><span class="brand-monogram" aria-hidden="true">CC</span><span class="brand-copy"><strong>Collab Create</strong><small>Recruitment</small></span></span>
           </a>
           <p class="footer-tagline">
             Recruitment support for employers and candidates, with a clear 28-day payment arrangement for placements.
@@ -581,7 +502,8 @@
           <ul class="footer-nav-list">
             <li><a href="employers.html">Employer Services</a></li>
             <li><a href="employers.html#settlement">28-Day Settlement Model</a></li>
-            <li><a href="jobs.html">Sectors & Disciplines</a></li>
+            <li><a href="jobs.html">Roles & Sectors</a></li>
+            <li><a href="blog.html">Recruitment Insights</a></li>
             <li><a href="how-it-works.html">Hiring Timeline</a></li>
             <li><a href="contact.html?type=employer">Submit Vacancy Enquiry</a></li>
           </ul>

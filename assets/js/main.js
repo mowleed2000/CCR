@@ -6,7 +6,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initStickyHeader();
-  initHeroVideo();
   initTabs();
   initAccordions();
   initEnquiryForms();
@@ -93,71 +92,6 @@ function initStickyHeader() {
 /**
  * Hero Video Controller (Play/Pause, Visibility Observer, Reduced Motion)
  */
-function initHeroVideo() {
-  const video = document.getElementById('hero-video');
-  const toggleBtn = document.getElementById('video-toggle-btn');
-  if (!video) return;
-
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let userPaused = false;
-
-  if (prefersReducedMotion) {
-    video.pause();
-    userPaused = true;
-    if (toggleBtn) {
-      updateToggleButton(true);
-    }
-    return;
-  }
-
-  function updateToggleButton(isPaused) {
-    if (!toggleBtn) return;
-    const icon = toggleBtn.querySelector('.video-icon');
-    const label = toggleBtn.querySelector('.video-label');
-    if (isPaused) {
-      if (icon) icon.innerHTML = '&#9658;'; // Play symbol
-      if (label) label.textContent = 'Play Video';
-      toggleBtn.setAttribute('aria-label', 'Play hero video');
-    } else {
-      if (icon) icon.innerHTML = '&#10074;&#10074;'; // Pause symbol
-      if (label) label.textContent = 'Pause';
-      toggleBtn.setAttribute('aria-label', 'Pause hero video');
-    }
-  }
-
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      if (video.paused) {
-        video.play().then(() => {
-          userPaused = false;
-          updateToggleButton(false);
-        }).catch(err => {
-          console.warn('Playback error:', err);
-        });
-      } else {
-        video.pause();
-        userPaused = true;
-        updateToggleButton(true);
-      }
-    });
-  }
-
-  // Intersection Observer to conserve resources when video scrolls off-screen
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting && !video.paused) {
-          video.pause();
-        } else if (entry.isIntersecting && !userPaused && video.paused) {
-          video.play().catch(() => {});
-        }
-      });
-    }, { threshold: 0.2 });
-
-    observer.observe(video);
-  }
-}
-
 /**
  * Tab Navigation (How it works pathways, sector views)
  */
